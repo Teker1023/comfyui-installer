@@ -23,3 +23,16 @@ fi
 echo "=============================="
 echo " SDXL MODEL READY "
 echo "=============================="
+
+echo "=============================="
+echo " Download DreamShaper 8"
+echo "=============================="
+
+cd /workspace/ComfyUI/models/checkpoints
+
+if [ ! -f dreamshaper_8.safetensors ]; then
+  wget -c -O dreamshaper_8.safetensors \
+  https://huggingface.co/digiplay/DreamShaper_8/resolve/main/dreamshaper_8.safetensors
+else
+  echo "DreamShaper 8 already exists, skipping"
+fi
