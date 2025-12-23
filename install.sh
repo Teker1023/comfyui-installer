@@ -1,34 +1,29 @@
 #!/usr/bin/env bash
 set -e
 
-echo "=============================="
-echo " ComfyUI AUTO INSTALL START "
-echo "=============================="
+echo "========================================"
+echo " COMFYUI BOOTSTRAP INSTALL START "
+echo "========================================"
 
-# 1. Оновлення системи
-apt update -y
-apt upgrade -y
+BOOTSTRAP_DIR="$(cd "$(dirname "$0")/bootstrap" && pwd)"
 
-# 2. Встановлення базових пакетів
-apt install -y git python3 python3-pip python3-venv wget curl
+run_step () {
+  local script="$1"
+  echo ""
+  echo ">>> Running $script"
+  bash "$BOOTSTRAP_DIR/$script"
+}
 
-# 3. Перехід у робочу директорію
-cd /workspace || mkdir -p /workspace && cd /workspace
+run_step "00_system_base.sh"
+run_step "20_comfyui_core.sh"
+run_step "10_python_venv.sh"
+run_step "30_comfyui_custom_nodes.sh"
+run_step "40_models_sdxl.sh"
 
-# 4. Клонування ComfyUI
-if [ ! -d "ComfyUI" ]; then
-  git clone https://github.com/comfyanonymous/ComfyUI.git
-else
-  echo "ComfyUI вже існує, пропускаємо клонування"
-fi
-
-cd /workspace/ComfyUI
-
-# 5. Встановлення Python-залежностей ComfyUI
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
-
-echo "=============================="
-echo " BASE COMFYUI INSTALLED "
-echo " Run: cd /workspace/ComfyUI && python main.py"
-echo "=============================="
+echo ""
+echo "========================================"
+echo " BOOTSTRAP INSTALL COMPLETE "
+echo "========================================"
+echo ""
+echo "To start ComfyUI run:"
+echo "bash bootstrap/90_start_comfyui.sh"
