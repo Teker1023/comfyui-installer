@@ -36,3 +36,14 @@ if [ ! -f dreamshaper_8.safetensors ]; then
 else
   echo "DreamShaper 8 already exists, skipping"
 fi
+
+echo "=== Downloading Juggernaut XL v9 checkpoint ==="
+
+cd /workspace/ComfyUI/models/checkpoints
+
+if [ ! -f "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors" ]; then
+  wget -c \
+  https://huggingface.co/RunDiffusion/Juggernaut-XL-v9/resolve/main/Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors
+else
+  echo "Juggernaut XL v9 already exists"
+fi
