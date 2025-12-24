@@ -45,3 +45,19 @@ if [ ! -d "ComfyUI-BRIA_AI-RMBG" ]; then
 else
   echo "BRIA AI RMBG already installed"
 fi
+
+echo "=== Downloading BRIA RMBG 1.4 model ==="
+
+RMBG_DIR="/workspace/ComfyUI/custom_nodes/ComfyUI-BRIA_AI-RMBG/RMBG-1.4"
+
+mkdir -p "$RMBG_DIR"
+
+if [ ! -f "$RMBG_DIR/model.pth" ]; then
+  wget -c \
+  -O "$RMBG_DIR/model.pth" \
+  https://huggingface.co/briaai/RMBG-1.4/resolve/main/model.pth
+else
+  echo "RMBG model already exists"
+fi
+
+
