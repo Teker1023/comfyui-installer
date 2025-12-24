@@ -75,4 +75,8 @@ echo "Installing IP-Adapter Python dependencies..."
 pip install --no-cache-dir aiohttp safetensors insightface onnxruntime opencv-python
 
 
+# === ControlNet AUX (Lineart / Scribble / Canny) ===
+clone_if_missing \
+  https://github.com/Fannovel16/comfyui_controlnet_aux.git \
+  comfyui_controlnet_aux
 
