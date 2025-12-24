@@ -62,5 +62,17 @@ else
   echo "BRIA RMBG model already exists"
 fi
 
+echo "=============================="
+echo " [IP-ADAPTER] INSTALL "
+echo "=============================="
+
+cd /workspace/ComfyUI/custom_nodes
+
+# IP-Adapter custom node
+clone_if_missing https://github.com/cubiq/ComfyUI_IPAdapter_plus.git ComfyUI_IPAdapter_plus
+
+echo "Installing IP-Adapter Python dependencies..."
+pip install --no-cache-dir aiohttp safetensors insightface onnxruntime opencv-python
+
 
 
