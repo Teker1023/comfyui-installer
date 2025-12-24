@@ -47,3 +47,17 @@ if [ ! -f "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors" ]; then
 else
   echo "Juggernaut XL v9 already exists"
 fi
+
+echo "=============================="
+echo " [IP-ADAPTER MODELS | SDXL] "
+echo "=============================="
+
+mkdir -p /workspace/ComfyUI/models/ipadapter
+cd /workspace/ComfyUI/models/ipadapter
+
+# IP-Adapter base SDXL
+wget -c https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors
+
+# IP-Adapter PLUS SDXL (ViT-H)
+wget -c https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
+
