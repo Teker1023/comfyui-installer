@@ -34,3 +34,14 @@ clone_if_missing https://github.com/spinagon/ComfyUI-seamless-tiling.git ComfyUI
 echo "=============================="
 echo " CUSTOM NODES READY "
 echo "=============================="
+
+
+echo "=== Installing BRIA AI RMBG custom nodes ==="
+
+cd /workspace/ComfyUI/custom_nodes
+
+if [ ! -d "ComfyUI-BRIA_AI-RMBG" ]; then
+  git clone https://github.com/ZHO-ZHO-ZHO/ComfyUI-BRIA_AI-RMBG
+else
+  echo "BRIA AI RMBG already installed"
+fi
